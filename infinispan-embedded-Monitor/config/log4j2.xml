@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration>
+  <Appenders>
+    <Console name="STDOUT" target="SYSTEM_OUT">
+      <PatternLayout pattern="\r[%5p | %t] %m%n" />
+    </Console>
+    <File name="Monitor" fileName="monitor.log" append="true">
+      <PatternLayout pattern="%d %p [%t] %c|%m%n" />
+    </File>
+    <File name="JGroups" fileName="jgroups.log" append="true">
+      <PatternLayout pattern="%d %p [%t] %c|%m%n" />
+    </File>
+    <File name="Infinispan" fileName="infinispan.log" append="true">
+      <PatternLayout pattern="%d %p [%t] %c|%m%n" />
+    </File>
+  </Appenders>
+ 
+  <Loggers>
+    <Logger name="org.jgroups" level="debug" additivity="false">
+      <AppenderRef ref="JGroups"/>
+    </Logger>
+
+    <Logger name="org.infinispan" level="debug" additivity="false">
+      <AppenderRef ref="Infinispan"/>
+    </Logger>
+
+    <Root level="debug">
+        <AppenderRef ref="STDOUT"/>
+        <AppenderRef ref="Monitor"/>
+    </Root>
+  </Loggers>
+ 
+</Configuration>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<infinispan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="urn:infinispan:config:7.1">
+
+    <global>
+        <transport>
+            <properties>
+                <property name="configurationFile" value="jgroups.xml"/>
+            </properties>
+        </transport>
+    </global>
+    <default>
+        <!-- Configure a synchronous replication cache -->
+        <clustering mode="replication">
+            <sync/>
+        </clustering>
+    </default>
+
+    <namedCache name="my-cache">
+        <expiration lifespan="5000" maxIdle="10000" wakeUpInterval="1000" />
+    </namedCache>
+</infinispan>
